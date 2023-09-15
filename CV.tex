@@ -1,32 +1,239 @@
-%!TEX root = cv.tex
-% TODO: Try to use bibliographic files here. Some WIP in min/minimal.tex
-% TODO: Have some kind of highlighted flagging system where a short list could be generated with only key highlighted references.
+\documentclass[10pt,letterpaper]{article}
+\usepackage[letterpaper,margin=0.55in, top = 0.3in, bottom = 0.3in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{mdwlist}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{etaremune}
+\usepackage{tgpagella}
+\usepackage[colorlinks=true, urlcolor=blue]{hyperref}
+\pagestyle{empty}
+\setlength{\tabcolsep}{0em}
 
-\begin{etaremune}
+% indent section style, used for sections that aren't already in lists
+% that need indentation to the level of all text in the document
+\newenvironment{indentsection}[1]%
+{\begin{list}{}%
+  {\setlength{\leftmargin}{#1}}%
+  \item[]%
+}
+{\end{list}}
 
-% Formatting:
-% <Authors>
-% <(Year, Month)>
-% <Title>
-% <Name of conference>,
-% <Location>
-\item \textbf{R. Gong*}, S.L. Shang, V. Goncharov, B. Merrill, X. Guo, Z.K. Liu
-(2022, October) \emph{Invited}.
-Exploring and Implementing Thermodynamic Models for Liquid and their Applications to Thermodynamic Modeling of Molten Salts. 
-Materials Science and Technology 2023,
-Columbus, OH.
-\item \textbf{R. Gong*}, S. Shahbazi
-(2023, July).
-Thermodynamic Modeling and Model Selection for LiF-LnF3 Molten Salts with Uncertainty Propagation.
-Molten Salt Thermal Properties Uncertainty Workshop,
-Lemont, IL.
-\item \textbf{R. Gong*}, S.L. Shang, G. Canning, R.M. Rioux, M.J. Janik, Z.K. Liu
-(2022, October).
-Thermodynamic Modeling with Uncertainty Quantification and its Implications for Intermetallic Catalysts Design: Application to PdZn-Based Gamma-Brass Phase.
-Materials Science and Technology 2022,
-Pittsburgh, PA.
+% opposite of above; bump a section back toward the left margin
+\newenvironment{unindentsection}[1]%
+{\begin{list}{}%
+  {\setlength{\leftmargin}{-0.5#1}}%
+  \item[]%
+}
+{\end{list}}
 
-\end{etaremune}
+% format two pieces of text, one left aligned and one right aligned
+\newcommand{\headerrow}[2]
+%{\begin{tabular*}{\linewidth}{l@{\extracolsep{\fill}}r}
+{\begin{tabular*}{\linewidth}{l@{\extracolsep{\fill}}r}
+  #1 &
+  #2 \\
+\end{tabular*}}
+
+% make "C++" look pretty when used in text by touching up the plus signs
+\newcommand{\CPP}
+{C\nolinebreak[4]\hspace{-.05em}\raisebox{.22ex}{\footnotesize\bf ++}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% CONFIGURATION FLAGS %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Boolean flags for which type of conference presentations are displayed
+
+% and the actual content starts here
+\begin{document}
+\begin{center}
+{\LARGE \textbf{Rushi Gong}}
+
+%ADDRESS LINE 1\ \ \textbullet
+%\ \ ADDRESS LINE 2\ \ \textbullet
+%\ \ CITY, ST #ZIP#
+%\\
+
+
+(814) 441-2268\ \ \textbullet
+\ \ \href{mailto:rsgong@psu.edu}{rsgong@psu.edu}
+\end{center}
+
+
+\hrule
 \vspace{-0.6em}
-\hspace{1.5em}{\small \emph{\textbf{*} presenter}}
-\vspace{0.4em}
+\subsection*{Education}
+
+\begin{itemize}
+  \parskip=0.1em
+
+  \item
+  \headerrow
+    {\textbf{The Pennsylvania State University}}
+    {\textbf{University Park, PA}}
+  \\
+  \headerrow
+    {\emph{Ph.D. Materials Science and Engineering}}
+    {\emph{2020 -- 2024}}
+  \begin{itemize*}
+    \item 4.0 GPA
+  \end{itemize*}
+
+
+  \item
+  \headerrow
+    {\textbf{Beihang University (Beijing University of Aeronautics \& Astronautics)}}
+    {\textbf{Beijing, China}}
+  \\
+  \headerrow
+    {\emph{B.S. Materials Science and Engineering; Minor, Mathematics}}
+    {\emph{2015 -- 2019}}
+  \begin{itemize*}
+    \item 3.76 GPA, Merit Student (Top 4\%)
+  \end{itemize*}
+
+\end{itemize}
+
+%% TODO: add core competencies according to JD
+%\hrule
+%\vspace{-0.6em}
+%\subsection*{Core Competencies}
+%\begin{itemize}
+%  \parskip=0.1em
+
+%  \item \textbf{Alloy systems}: Pd, Zn
+%  \item \textbf{Computational alloy design and development}
+%\end{itemize}
+
+\hrule
+\vspace{-0.6em}
+\subsection*{Research Experience}
+
+\renewcommand\labelitemiii{$\circ$}
+\begin{itemize}
+  \parskip=0.1em
+
+  \item
+  \headerrow
+    {\textbf{Phases Research Lab, The Pennsylvania State University}}
+    {\textbf{University Park, PA}}
+  \\
+  \headerrow
+    {\emph{Graduate Research Assistant (Advisor: Prof. Zi-Kui Liu)}}
+    {\emph{2020 -- Present}}
+  \begin{itemize*}
+    \item Developed the Pd-Zn-based alloy thermodynamic databases and quantified uncertainty for accurate nuclearity design in catalysts
+    \item First to apply Bayesian statistics and model selection for selecting liquid solution models in CALPHAD modeling
+    \item Improved functionalities of computational thermodynamics tools PyCalphad and ESPEI for molten salts properties prediction
+    \item Developed DFTTK structure builders to automatically generate structures for high-throughput computations
+  \end{itemize*}
+  \item
+  \headerrow
+    {\textbf{The Nuclear Science and Engineering Division, Argonne National Laboratory}}
+    {\textbf{Lemont, IL}}
+  \\
+  \headerrow
+    {\emph{Research Aide Technical PhD (Advisor: Dr. Shayan Shahbazi)}}
+    {\emph{07/2022 -- 09/2022, 05/2023 -- 08/2023}}
+  \begin{itemize*}
+    \item Developed and quantified uncertainty of LiF-LnF3 thermodynamic databases to predict vapor-liquid equilibrium properties for distillation system design in Molten Salt Reactor
+    \item Developed frameworks for calculating the Ellingham diagram to quantify redox potential of metals in fluoride molten salts
+  \end{itemize*}
+  \item
+  \headerrow
+    {\textbf{International Research Institute for Multidisciplinary Science, Beihang University}}
+    {\textbf{Beijing, China}}
+  \\
+  \headerrow
+    {\emph{Undergraduate Research Assistant (Advisor: Prof. Qianfan Zhang)}}
+    {\emph{2017 -- 2019}}
+  \begin{itemize*}
+    \item Designed performance analysis via computational methods to examine the thermodynamics and kinetics of hydrogen evolution reaction on the transition metal adsorbed on two-dimensional catalytic substrates
+  \end{itemize*}
+
+  \item
+  \headerrow
+    {\textbf{Department of Materials Science and Engineering, Rensselaer Polytechnic Institute}}
+    {\textbf{Troy, NY}}
+  \\
+  \headerrow
+    {\emph{Undergraduate Research Assistant (Advisor: Prof. Yunfeng Shi)}}
+    {\emph{2018}}
+  \begin{itemize*}
+    \item Investigated the corrosion process of the glass nanowire by using Molecular Dynamics simulations, quantified the corrosion rate and analyzed the relationship between pre-tension and corrosion
+  \end{itemize*}
+
+\end{itemize}
+
+\hrule
+\vspace{-0.6em}
+\subsection*{Technical Skills}
+
+\begin{indentsection}{\parindent}
+\hyphenpenalty=1000
+\begin{description*}
+  \item[Computational Tools and Software:]
+  Python, VASP, Thermo-Calc, Matlab, ATAT, PyCalphad, ESPEI, MongoDB
+  \item [Software Developing:]
+  PyCalphad, ESPEI, DFTTK (\href{https://github.com/PhasesResearchLab/DFTTK}{github.com/phasesresearchlab/dfttk})
+\end{description*}
+\end{indentsection}
+
+\hrule
+\vspace{-0.6em}
+\subsection*{Teaching Experience}
+
+\renewcommand\labelitemiii{$\circ$}
+\begin{itemize}
+    \parskip=0.1em
+
+    \item
+    \headerrow
+    {\textbf{Department of Materials Science and Engineering, Penn State University}}
+    {\textbf{University Park, PA}}
+    \\
+    \headerrow
+    {\emph{Teaching Assistant}}
+    {\emph{2021 -- Present}}
+    \begin{itemize*}
+        \item \emph{(Fall 2023)} MatSE 580: Computational Thermodynamics
+        \item \emph{(Fall 2022)} MatSE 581: Computational Kinetics
+        \item \emph{(Spring 2021, Spring 2023)} MatSE 410: Phase Relations in Materials Systems
+    \end{itemize*}
+\end{itemize}
+
+\hrule
+\vspace{-0.6em}
+\subsection*{Awards}
+
+\begin{itemize}
+  \parskip=0.1em
+  \item  
+  \headerrow
+    {MATSE Travel Award for MS\&T 23 Conference, Pennsylvania State University} {\emph{2023}}
+  \item
+  \headerrow
+    {NSF Scholarship, Calphad L Conference} {\emph{2023}}
+  \item  
+  \headerrow
+    {Thrower Travel Award for Calphad L Conference, Pennsylvania State University} {\emph{2023}}
+\end{itemize}
+
+
+\hrule
+\vspace{-0.6em}
+\subsection*{Publications}
+
+% Assumes that the ENUMERATE_PUBLICATIONS flag exists
+\input{publications}
+
+\hrule
+\vspace{-0.6em}
+\subsection*{Presentations}
+
+% Assumes that the ENUMERATE_PUBLICATIONS flag exists
+\input{conference_presentations}
+
+\end{document}
